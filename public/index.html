@@ -9,7 +9,11 @@
 			<span v-show="!temperature">Loading...</span>
 			<div>
 				<label for="city">City:</label>
-				<input v-model="city">
+				<input v-model="city" name="city">
+			</div>
+			<div>
+				<label for="temperature">Temperature between {{goodTemperature[0]}} and {{goodTemperature[1]}}</label>
+				<vue-slider v-model="goodTemperature" name="temperature">
 			</div>
 		</div>
 	</body>
