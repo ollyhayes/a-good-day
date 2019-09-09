@@ -4,7 +4,8 @@ import {getWeatherForCity} from './api';
 const app = new Vue({
 	el: '#app',
 	data: {
-		temperature: undefined
+		temperature: undefined,
+		city: 'London'
 	},
 	computed: {
 		dayIsGood() {
@@ -13,7 +14,7 @@ const app = new Vue({
 	},
 	methods: {
 		async getWeather() {
-			const weather = await getWeatherForCity('Londonn');
+			const weather = await getWeatherForCity(this.city);
 
 			this.temperature = weather.temperature;
 		}
