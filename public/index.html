@@ -5,7 +5,8 @@
 	</head>
 	<body>
 		<div id='app'>
-			<span>Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
+			<span v-show="temperature">Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
+			<span v-show="!temperature">Loading...</span>
 			<div>
 				<label for="city">City:</label>
 				<input v-model="city">
