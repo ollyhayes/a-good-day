@@ -1,10 +1,11 @@
 <html>
 	<head>
 		<title>A good day</title>
-		<script src="/bundle.js"></script>
+		<script defer src="/bundle.js"></script>
 	</head>
 	<body>
-		<div class="root">
+		<div id='app'>
+			<span>Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
 		</div>
 	</body>
 </html>

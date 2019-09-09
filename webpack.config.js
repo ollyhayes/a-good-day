@@ -7,5 +7,10 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: './public'
+	},
+	resolve: {
+		alias: {
+			vue: 'vue/dist/vue.js'
+		}
 	}
 };
