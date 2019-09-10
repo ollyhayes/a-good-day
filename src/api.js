@@ -1,19 +1,35 @@
-export async function getWeatherForCity(city) {
-	// const result = await fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=9753e913ea64baa961f8b3627b9b0cf3');
+import {memoize} from 'lodash';
 
-	// const json = await result.json();
+async function requestLocationForCity(city) {
+	const result = await fetch(`http://geocode.xyz/${city}?json=1`);
 
-	const json = city == 'Bristol'
-		? {
-			'main': { 'temp': 26 },
-		}
-		: {
-			'main': { 'temp': 23 },
-		};
-
-	await new Promise(resolve => setTimeout(resolve, 1000));
+	const json = await result.json();
 
 	return {
-		temperature: json.main.temp
+		lon: json.longt,
+		lat: json.latt
 	};
 }
+
+async function requestWeatherForLocation({lon, lat}) {
+	const result = await fetch(`/api/darksky/forecast/access_key/${lon},${lat}`);
+
+	const json = await result.json();
+
+	const weather = json.daily.data[0];
+
+	return {
+		temperature: weather.temperatureHigh,
+		chanceOfRain: weather.precipProbability,
+		windSpeed: weather.windSpeed
+	};
+
+}
+
+async function requestWeatherForCity(city) {
+	const location = await requestLocationForCity(city);
+
+	return await requestWeatherForLocation(location);
+}
+
+export const getWeatherForCity = memoize(requestWeatherForCity);

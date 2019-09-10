@@ -15,6 +15,14 @@
 				<label for="temperature">Temperature between {{goodTemperature[0]}} and {{goodTemperature[1]}}</label>
 				<vue-slider v-model="goodTemperature" name="temperature">
 			</div>
+			<div>
+				<label for="windSpeed">WindSpeed between {{goodWindSpeed[0]}} and {{goodWindSpeed[1]}}</label>
+				<vue-slider v-model="goodWindSpeed" name="windSpeed">
+			</div>
+			<div>
+				<label for="chanceOfRain">ChanceOfRain between {{goodChanceOfRain[0]}} and {{goodChanceOfRain[1]}}</label>
+				<vue-slider v-model="goodChanceOfRain" name="chanceOfRain">
+			</div>
 		</div>
 	</body>
 </html>
