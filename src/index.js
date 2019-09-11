@@ -10,6 +10,7 @@ Vue.component('VueSlider', VueSlider);
 const app = new Vue({
 	el: '#app',
 	data: {
+		state: 'loading',
 		location: 'London',
 		temperature: undefined,
 		windSpeed: undefined,
@@ -30,12 +31,18 @@ const app = new Vue({
 	},
 	methods: {
 		async getWeather() {
-			this.temperature = this.windSpeed = this.chanceOfRain = undefined;
-			const weather = await getWeatherForlocation(this.location);
+			this.state = 'loading';
+			try {
+				const weather = await getWeatherForlocation(this.location);
 
-			this.temperature = weather.temperature;
-			this.windSpeed = weather.windSpeed;
-			this.chanceOfRain = weather.chanceOfRain;
+				this.temperature = weather.temperature;
+				this.windSpeed = weather.windSpeed;
+				this.chanceOfRain = weather.chanceOfRain;
+				this.state = 'ready';
+			}
+			catch (error) {
+				this.state = 'error';
+			}
 		}
 	},
 	created() {
@@ -43,7 +50,7 @@ const app = new Vue({
 	},
 	watch: {
 		location() {
-			this.temperature = this.windSpeed = this.chanceOfRain = undefined;
+			this.state = 'waiting';
 			this.debouncedGetWeather();
 		}
 	}
