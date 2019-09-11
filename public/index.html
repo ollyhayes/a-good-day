@@ -19,15 +19,15 @@
 					<div class="good-day-parameters">
 						<div>
 							<label for="temperature">Temperature between {{goodTemperature[0]}} and {{goodTemperature[1]}}</label>
-							<vue-slider v-model="goodTemperature" name="temperature">
+							<vue-slider v-model="goodTemperature" name="temperature" min="-20" max="45">
 						</div>
 						<div>
 							<label for="windSpeed">WindSpeed between {{goodWindSpeed[0]}} and {{goodWindSpeed[1]}}</label>
-							<vue-slider v-model="goodWindSpeed" name="windSpeed">
+							<vue-slider v-model="goodWindSpeed" name="windSpeed" max="30">
 						</div>
 						<div>
 							<label for="chanceOfRain">ChanceOfRain between {{goodChanceOfRain[0]}} and {{goodChanceOfRain[1]}}</label>
-							<vue-slider v-model="goodChanceOfRain" name="chanceOfRain">
+							<vue-slider v-model="goodChanceOfRain" name="chanceOfRain" max="1" interval="0.05">
 						</div>
 					</div>
 				</div>
