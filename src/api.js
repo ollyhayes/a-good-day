@@ -1,7 +1,7 @@
 import {memoize} from 'lodash';
 
-async function requestLocationForCity(city) {
-	const result = await fetch(`http://geocode.xyz/${city}?json=1`);
+async function requestLatLonForlocation(location) {
+	const result = await fetch(`http://geocode.xyz/${location}?json=1`);
 
 	const json = await result.json();
 
@@ -26,10 +26,10 @@ async function requestWeatherForLocation({lon, lat}) {
 
 }
 
-async function requestWeatherForCity(city) {
-	const location = await requestLocationForCity(city);
+async function requestWeatherForlocation(location) {
+	const latLon = await requestLatLonForlocation(location);
 
-	return await requestWeatherForLocation(location);
+	return await requestWeatherForLocation(latLon);
 }
 
-export const getWeatherForCity = memoize(requestWeatherForCity);
+export const getWeatherForlocation = memoize(requestWeatherForlocation);

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import {debounce} from 'lodash';
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
-import {getWeatherForCity} from './api';
+import {getWeatherForlocation} from './api';
 import './style.less';
 
 Vue.component('VueSlider', VueSlider);
@@ -10,7 +10,7 @@ Vue.component('VueSlider', VueSlider);
 const app = new Vue({
 	el: '#app',
 	data: {
-		city: 'London',
+		location: 'London',
 		temperature: undefined,
 		windSpeed: undefined,
 		chanceOfRain: undefined,
@@ -31,7 +31,7 @@ const app = new Vue({
 	methods: {
 		async getWeather() {
 			this.temperature = this.windSpeed = this.chanceOfRain = undefined;
-			const weather = await getWeatherForCity(this.city);
+			const weather = await getWeatherForlocation(this.location);
 
 			this.temperature = weather.temperature;
 			this.windSpeed = weather.windSpeed;
@@ -42,7 +42,7 @@ const app = new Vue({
 		this.debouncedGetWeather = debounce(this.getWeather, 500);
 	},
 	watch: {
-		city() {
+		location() {
 			this.temperature = this.windSpeed = this.chanceOfRain = undefined;
 			this.debouncedGetWeather();
 		}
