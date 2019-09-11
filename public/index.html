@@ -6,10 +6,22 @@
 	<body>
 		<div id='app'>
 			<div class="main-box">
-				<span v-show="state==='ready'">Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
-				<span v-show="state==='waiting'">Waiting for input...</span>
-				<span v-show="state==='loading'">Loading weather...</span>
-				<span v-show="state==='error'">Error connecting to weather service.</span>
+				<template v-if="state==='ready'">
+					<span>Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
+				</template>
+				<template v-if="state==='waiting'">
+					<span>Waiting for input...</span>
+					<svg class="icon spinning">
+						<use xlink:href="fa-bundle.svg#sync"></use>
+					</svg>
+				</template>
+				<template v-if="state==='loading'">
+					<span>Loading weather...</span>
+					<svg class="icon spinning">
+						<use xlink:href="fa-bundle.svg#sync"></use>
+					</svg>
+				</template>
+				<span v-if="state==='error'">Error connecting to weather service</span>
 			</div>
 			<div class="configuration-box">
 				<div>
