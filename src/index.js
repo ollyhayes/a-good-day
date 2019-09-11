@@ -3,6 +3,7 @@ import {debounce} from 'lodash';
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 import {getWeatherForCity} from './api';
+import './style.less';
 
 Vue.component('VueSlider', VueSlider);
 

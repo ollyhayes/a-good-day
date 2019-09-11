@@ -5,23 +5,27 @@
 	</head>
 	<body>
 		<div id='app'>
-			<span v-show="temperature">Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
-			<span v-show="!temperature">Loading...</span>
-			<div>
-				<label for="city">City:</label>
-				<input v-model="city" name="city">
+			<div class="main-box">
+				<span v-show="temperature">Today is a {{ dayIsGood ? 'good' : 'bad' }} day</span>
+				<span v-show="!temperature">Loading...</span>
 			</div>
-			<div>
-				<label for="temperature">Temperature between {{goodTemperature[0]}} and {{goodTemperature[1]}}</label>
-				<vue-slider v-model="goodTemperature" name="temperature">
-			</div>
-			<div>
-				<label for="windSpeed">WindSpeed between {{goodWindSpeed[0]}} and {{goodWindSpeed[1]}}</label>
-				<vue-slider v-model="goodWindSpeed" name="windSpeed">
-			</div>
-			<div>
-				<label for="chanceOfRain">ChanceOfRain between {{goodChanceOfRain[0]}} and {{goodChanceOfRain[1]}}</label>
-				<vue-slider v-model="goodChanceOfRain" name="chanceOfRain">
+			<div class="configuration-box">
+				<div>
+					<label for="city">City:</label>
+					<input v-model="city" name="city">
+				</div>
+				<div>
+					<label for="temperature">Temperature between {{goodTemperature[0]}} and {{goodTemperature[1]}}</label>
+					<vue-slider v-model="goodTemperature" name="temperature">
+				</div>
+				<div>
+					<label for="windSpeed">WindSpeed between {{goodWindSpeed[0]}} and {{goodWindSpeed[1]}}</label>
+					<vue-slider v-model="goodWindSpeed" name="windSpeed">
+				</div>
+				<div>
+					<label for="chanceOfRain">ChanceOfRain between {{goodChanceOfRain[0]}} and {{goodChanceOfRain[1]}}</label>
+					<vue-slider v-model="goodChanceOfRain" name="chanceOfRain">
+				</div>
 			</div>
 		</div>
 	</body>
