@@ -1,6 +1,7 @@
 @background: gainsboro;
 @box-background: white;
 @border: gray;
+@transition-time: 0.5s;
 
 html,body {
 	background: @background;
@@ -14,8 +15,8 @@ html,body {
 .box() {
 	border: @border 1px solid;
 	background: white;
-	margin: 20px;
 	padding: 20px;
+	margin: 10px;
 }
 
 .main-box {
@@ -23,21 +24,47 @@ html,body {
 	font-size: 20px;
 }
 
-.configuration-box {
-	.box();
+.configuration-section {
 	position: absolute;
 	top: 0;
 	right: 0;
-	min-width: 370px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: flex-start;
 
-	div {
-		&:not(:last-child) {
-			margin: 0 0 20px 0;
+	.configuration-button {
+		.box();
+		padding: 3px;
+		margin-left: 0;
+
+		svg {
+			transition: transform @transition-time;
+		}
+
+		&.selected svg {
+			transform: rotate(-45deg);
 		}
 	}
 
-	div.good-day-parameters {
-		padding: 20px 20px 0 20px;
+	.configuration-box {
+		.box();
+		min-width: 370px;
+		transform: translateY(-300px);
+		transition: transform @transition-time;
+
+		&.isShown {
+			transform: translateY(0);
+		}
+
+		div {
+			&:not(:last-child) {
+				margin: 0 0 20px 0;
+			}
+		}
+
+		div.good-day-parameters {
+			padding: 20px 20px 0 20px;
+		}
 	}
 }
 

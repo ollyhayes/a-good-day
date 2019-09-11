@@ -11,6 +11,7 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		state: 'loading',
+		showConfig: false,
 		location: 'London',
 		temperature: undefined,
 		windSpeed: undefined,
@@ -43,7 +44,11 @@ const app = new Vue({
 			catch (error) {
 				this.state = 'error';
 			}
+		},
+		toggleConfig() {
+			this.showConfig = !this.showConfig;
 		}
+
 	},
 	created() {
 		this.debouncedGetWeather = debounce(this.getWeather, 500);

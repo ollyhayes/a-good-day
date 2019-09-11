@@ -23,25 +23,32 @@
 				</template>
 				<span v-if="state==='error'">Error finding weather</span>
 			</div>
-			<div class="configuration-box">
-				<div>
-					<label for="location">Location:</label>
-					<input v-model="location" name="location">
-				</div>
-				<div>
-					<header>What is a good day for you?</header>
-					<div class="good-day-parameters">
-						<div>
-							<label for="temperature">Temperature between {{goodTemperature[0]}}°C and {{goodTemperature[1]}}°C</label>
-							<vue-slider v-model="goodTemperature" name="temperature" :min="-20" :max="45">
-						</div>
-						<div>
-							<label for="windSpeed">WindSpeed between {{goodWindSpeed[0]}}mph and {{goodWindSpeed[1]}}mph</label>
-							<vue-slider v-model="goodWindSpeed" name="windSpeed" :max="30">
-						</div>
-						<div>
-							<label for="chanceOfRain">ChanceOfRain between {{Math.round(goodChanceOfRain[0] * 100)}}% and {{Math.round(goodChanceOfRain[1] * 100)}}%</label>
-							<vue-slider v-model="goodChanceOfRain" name="chanceOfRain" :max="1" :interval="0.01">
+			<div class="configuration-section">
+				<button class="configuration-button" v-on:click="toggleConfig" v-bind:class="{ selected: showConfig }">
+					<svg class="icon">
+						<use xlink:href="fa-bundle.svg#cog"></use>
+					</svg>
+				</button>
+				<div class="configuration-box" v-bind:class="{ isShown: showConfig }">
+					<div>
+						<label for="location">Location:</label>
+						<input v-model="location" name="location">
+					</div>
+					<div>
+						<header>What is a good day for you?</header>
+						<div class="good-day-parameters">
+							<div>
+								<label for="temperature">Temperature between {{goodTemperature[0]}}°C and {{goodTemperature[1]}}°C</label>
+								<vue-slider v-model="goodTemperature" name="temperature" :min="-20" :max="45">
+							</div>
+							<div>
+								<label for="windSpeed">WindSpeed between {{goodWindSpeed[0]}}mph and {{goodWindSpeed[1]}}mph</label>
+								<vue-slider v-model="goodWindSpeed" name="windSpeed" :max="30">
+							</div>
+							<div>
+								<label for="chanceOfRain">Chance Of Rain between {{Math.round(goodChanceOfRain[0] * 100)}}% and {{Math.round(goodChanceOfRain[1] * 100)}}%</label>
+								<vue-slider v-model="goodChanceOfRain" name="chanceOfRain" :max="1" :interval="0.01">
+							</div>
 						</div>
 					</div>
 				</div>
