@@ -16,9 +16,9 @@ const app = new Vue({
 		temperature: undefined,
 		windSpeed: undefined,
 		chanceOfRain: undefined,
-		goodTemperature: [15, 25],
+		goodTemperature: [15, 28],
 		goodWindSpeed: [0, 15],
-		goodChanceOfRain: [0, 0.3]
+		goodChanceOfRain: [0, 0.45]
 	},
 	computed: {
 		dayIsGood() {
