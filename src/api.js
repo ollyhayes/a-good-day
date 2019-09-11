@@ -5,6 +5,9 @@ async function requestLatLonForlocation(location) {
 
 	const json = await result.json();
 
+	if (json.error)
+		throw new Error('unknown location');
+
 	return {
 		lon: json.longt,
 		lat: json.latt
@@ -29,17 +32,7 @@ async function requestWeatherForLocation({lon, lat}) {
 async function requestWeatherForlocation(location) {
 	const latLon = await requestLatLonForlocation(location);
 
-<<<<<<< HEAD
 	return await requestWeatherForLocation(latLon);
-=======
-	// return await requestWeatherForLocation(location);
-
-	return {
-		temperature: 18,
-		chanceOfRain: 0.4,
-		windSpeed: 11
-	};
->>>>>>> d170b20... Better limits on sliders
 }
 
 export const getWeatherForlocation = memoize(requestWeatherForlocation);
