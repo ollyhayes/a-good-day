@@ -34,15 +34,17 @@ html,body {
 
 	.configuration-button {
 		.box();
-		padding: 3px;
+		padding: 5px;
 		margin-left: 0;
 
 		svg {
+			height: 24px;
+			width: 24px;
 			transition: transform @transition-time;
 		}
 
 		&.selected svg {
-			transform: rotate(-45deg);
+			transform: rotate(-90deg);
 		}
 	}
 
@@ -71,7 +73,6 @@ html,body {
 svg.icon {
 	height: 16px;
 	width: 16px;
-	// display: block;
 	margin: auto;
 
 	&.spinning {
